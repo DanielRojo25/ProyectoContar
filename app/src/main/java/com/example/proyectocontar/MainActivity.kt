@@ -80,11 +80,36 @@ class HiloNumeros(puntero:MainActivity):Thread(){
                                     R.drawable.noventayuno, R.drawable.noventaydos, R.drawable.noventaytres, R.drawable.noventaycuatro, R.drawable.noventaycinco,
                                     R.drawable.noventayseis, R.drawable.noventaysiete, R.drawable.noventayocho, R.drawable.noventaynueve, R.drawable.cien)
 
+
+    var audiosNumeros = arrayListOf(R.raw.uno, R.raw.dos, R.raw.tres, R.raw.cuatro, R.raw.cinco,
+        R.raw.seis, R.raw.siete, R.raw.ocho, R.raw.nueve, R.raw.diez,
+        R.raw.once, R.raw.doce, R.raw.trece, R.raw.catorce, R.raw.quince,
+        R.raw.dieciseis, R.raw.diecisiete, R.raw.dieciocho, R.raw.diecinueve, R.raw.veinte,
+        R.raw.veintiuno, R.raw.veintidos, R.raw.veintitres, R.raw.veinticuatro, R.raw.veinticinco,
+        R.raw.veintiseis, R.raw.veintisiete, R.raw.veintiocho, R.raw.veintinueve, R.raw.treinta,
+        R.raw.treintayuno, R.raw.treintaydos, R.raw.treintaytres, R.raw.treintaycuatro, R.raw.treintaycinco,
+        R.raw.treintayseis, R.raw.treintaysiete, R.raw.treintayocho, R.raw.treintaynueve, R.raw.cuarenta,
+        R.raw.cuarentayuno, R.raw.cuarentaydos, R.raw.cuarentaytres, R.raw.cuarentaycuatro, R.raw.cuarentaycinco,
+        R.raw.cuarentayseis, R.raw.cuarentaysiete, R.raw.cuarentayocho, R.raw.cuarentaynueve, R.raw.cincuenta,
+        R.raw.cincuentayuno, R.raw.cincuentaydos, R.raw.cincuentaytres, R.raw.cincuentaycuatro, R.raw.cincuentaycinco,
+        R.raw.cincuentayseis, R.raw.cincuentaysiete, R.raw.cincuentayocho, R.raw.cincuentaynueve, R.raw.sesenta,
+        R.raw.sesentayuno, R.raw.sesentaydos, R.raw.sesentaytres, R.raw.sesentaycuatro, R.raw.sesentaycinco,
+        R.raw.sesentayseis, R.raw.sesentaysiete, R.raw.sesentayocho, R.raw.sesentaynueve, R.raw.setenta,
+        R.raw.setentayuno, R.raw.setentaydos, R.raw.setentaytres, R.raw.setentaycuatro, R.raw.setentaycinco,
+        R.raw.setentayseis, R.raw.setentaysiete, R.raw.setentayocho, R.raw.setentaynueve, R.raw.ochenta,
+        R.raw.ochentayuno, R.raw.ochentaydos, R.raw.ochentaytres, R.raw.ochentaycuatro, R.raw.ochentaycinco,
+        R.raw.ochentayseis, R.raw.ochentaysiete, R.raw.ochentayocho, R.raw.ochentaynueve, R.raw.noventa,
+        R.raw.noventayuno, R.raw.noventaydos, R.raw.noventaytres, R.raw.noventaycuatro, R.raw.noventaycinco,
+        R.raw.noventayseis, R.raw.noventaysiete, R.raw.noventayocho, R.raw.noventaynueve, R.raw.cien)
+
     fun recorrerNumeros(){
 
         indice++
         if (indice == cartasNumeros.size) indice = 99
         p.binding.imagen.setImageResource(cartasNumeros[indice])
+
+        p.mp = MediaPlayer.create(p,audiosNumeros[indice])
+        p.mp.start()
 
         if(indice==99){
             p.runOnUiThread{
@@ -92,11 +117,13 @@ class HiloNumeros(puntero:MainActivity):Thread(){
             }
         }
 
+        sleep(1000)
+
     }
 
     fun terminar(){
         iniciar = false
-        //p.mp.stop()
+        p.mp.stop()
         p.binding.imagen.setImageResource(R.drawable.numeros)
     }
 
