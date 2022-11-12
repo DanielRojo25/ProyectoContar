@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var numeros : HiloNumeros
     lateinit var mp : MediaPlayer
-    var bandera = true
+    var bandera = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnPausa.setOnClickListener {
-            cambiarTexto(false)
+            cambiarTexto()
 
         }
 
@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun cambiarTexto (textStatus : Boolean){
-        if (textStatus){
+    fun cambiarTexto (){
+        if (bandera){
             binding.btnPausa.text="CONTINUAR"
             numeros.pausar()
 
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             binding.btnPausa.text="PAUSA"
             numeros.pausar()
         }
-
+        bandera = !bandera
     }
 }
 
