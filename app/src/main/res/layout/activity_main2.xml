@@ -6,7 +6,7 @@
     android:padding="20dp"
     android:background="#F4FA17"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity2">
 
     <TextView
         android:layout_width="match_parent"
@@ -17,12 +17,43 @@
         android:textStyle="bold"
         android:textColor="@color/black"/>
 
-    <ImageView
-        android:layout_width="match_parent"
+
+    <GridLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imagen"
-        android:padding="20dp"
-        android:src="@drawable/numeros"/>
+        android:layout_margin="20dp"
+        android:padding="5dp">
+
+        <ImageView
+            android:layout_width="249px"
+            android:layout_height="216px"
+            android:background="@color/white"
+            android:layout_marginRight="10dp"/>
+
+        <ImageView
+            android:layout_width="249px"
+            android:layout_height="216px"
+            android:background="@color/white"
+            android:layout_marginRight="10dp"/>
+
+        <ImageView
+            android:layout_width="249px"
+            android:layout_height="216px"
+            android:background="@color/white"
+            android:layout_marginRight="10dp"/>
+        <ImageView
+            android:layout_width="249px"
+            android:layout_height="216px"
+            android:background="@color/white"
+            android:layout_marginRight="10dp"/>
+        <ImageView
+            android:layout_width="249px"
+            android:layout_height="216px"
+            android:background="@color/white"
+            android:layout_marginRight="10dp"/>
+
+    </GridLayout>
+
 
     <TextView
         android:layout_width="match_parent"
