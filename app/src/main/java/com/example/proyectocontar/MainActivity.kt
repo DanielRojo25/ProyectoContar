@@ -68,15 +68,12 @@ class MainActivity : AppCompatActivity() {
         while (iniciar){
 
             if(!pausar){
-
                 runOnUiThread{
                     recorrerNumeros()
                 }
-
                 delay(1000)
-
             }
-
+            if(indice == 99) pausar()
         }
     }
 
@@ -95,18 +92,18 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        binding.btnTerminar.setOnClickListener {
+        binding.btnJugar.setOnClickListener {
+
+        }
+
+        binding.btnReiniciar.setOnClickListener {
             terminar()
         }
 
     }
 
     fun recorrerNumeros(){
-
-        indice++
-        if (indice == cartasNumeros.size) indice = 99
         binding.imagen.setImageResource(cartasNumeros[indice])
-
         mp = MediaPlayer.create(this,audiosNumeros[indice])
         mp.start()
 
@@ -114,6 +111,7 @@ class MainActivity : AppCompatActivity() {
             mp.stop()
             binding.texto.text = "Juego Terminado!"
         }
+        indice++
     }
 
     fun terminar(){
