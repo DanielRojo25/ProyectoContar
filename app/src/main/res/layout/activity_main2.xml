@@ -1,103 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="#F4FA17"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity2">
 
-    <TextView
+<ScrollView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="1,2,3.. A contar"
-        android:gravity="center_horizontal"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="#F4FA17"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity2">
 
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:padding="5dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1,2,3.. A contar"
+            android:gravity="center_horizontal"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
 
-        <ImageView
-            android:layout_width="249px"
-            android:layout_height="216px"
-            android:background="@color/white"
-            android:layout_marginRight="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/texto"
+            android:text=""
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"/>
 
-        <ImageView
-            android:layout_width="249px"
-            android:layout_height="216px"
-            android:background="@color/white"
-            android:layout_marginRight="10dp"/>
-
-        <ImageView
-            android:layout_width="249px"
-            android:layout_height="216px"
-            android:background="@color/white"
-            android:layout_marginRight="10dp"/>
-        <ImageView
-            android:layout_width="249px"
-            android:layout_height="216px"
-            android:background="@color/white"
-            android:layout_marginRight="10dp"/>
-        <ImageView
-            android:layout_width="249px"
-            android:layout_height="216px"
-            android:background="@color/white"
-            android:layout_marginRight="10dp"/>
-
-    </GridLayout>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/texto"
-        android:text=""
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"
-        android:textColor="@color/black"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:padding="20dp">
-
-        <Button
+        <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/btnIniciar"
-            android:layout_marginRight="10dp"
-            android:text="Iniciar"/>
+            android:columnCount="2">
 
-        <Button
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:columnCount="2">
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/rndmUno"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/rndmDos"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/rndmTres"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/rndmCuatro"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/rndmCinco"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/rndmSeis"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/rndmSiete"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/rndmOcho"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/rndmNueve"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/rndmDiez"
+                    />
+
+            </GridLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="Inicio"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/unoOrden"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/dosOrden"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/tresOrden"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/cuatroOrden"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/cincoOrden"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/seisOrden"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/sieteOrden"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/ochoOrden"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/nueveOrden"
+                    />
+
+                <ImageView
+                    android:layout_width="249px"
+                    android:layout_height="216px"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:id="@+id/diezOrden"
+                    />
+
+            </LinearLayout>
+        </GridLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/btnPausa"
-            android:layout_marginRight="10dp"
-            android:text="Pausar"/>
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:padding="20dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/btnTerminar"
-            android:padding="5dp"
-            android:text="Terminar"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/btnSiguiente"
+                android:layout_marginRight="10dp"
+                android:text="Sigueinte"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:id="@+id/btnReiniciar"
+                android:padding="5dp"
+                android:text="Reiniciar"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/btnSalir"
+
+                android:text="Salir"/>
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
-
-</LinearLayout>
+</ScrollView>
