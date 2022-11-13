@@ -7,15 +7,34 @@ import android.graphics.Color
 import android.graphics.Point
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.DragEvent
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main2.*
+import kotlin.random.Random
 
 class MainActivity2 : AppCompatActivity() {
 
-    var rango = arrayOf(1,10)
+
+    val rangoDiez = (0..9).shuffled()
+    val rangoVeinte = (10..19).shuffled()
+    val rangoTreinta = (20..29).shuffled()
+    val rangoCuarenta = (30..39).shuffled()
+    val rangoCincuenta = (40..49).shuffled()
+    val rangoSesenta = (50..59).shuffled()
+    val rangoSetenta = (60..69).shuffled()
+    val rangoOchenta = (70..79).shuffled()
+    val rangoNoventa = (80..89).shuffled()
+    val rangoCien = (90..99).shuffled()
+
+    val orden = arrayOfNulls<ImageView>(10)
+    var elementos = arrayOfNulls<ImageView>(10)
+
+
+
     var cartasNumeros = arrayListOf(R.drawable.uno, R.drawable.dos, R.drawable.tres, R.drawable.cuatro, R.drawable.cinco,
         R.drawable.seis, R.drawable.siete, R.drawable.ocho, R.drawable.nueve, R.drawable.diez,
         R.drawable.once, R.drawable.doce, R.drawable.trece, R.drawable.catorce, R.drawable.quince,
@@ -37,14 +56,95 @@ class MainActivity2 : AppCompatActivity() {
         R.drawable.noventayuno, R.drawable.noventaydos, R.drawable.noventaytres, R.drawable.noventaycuatro, R.drawable.noventaycinco,
         R.drawable.noventayseis, R.drawable.noventaysiete, R.drawable.noventayocho, R.drawable.noventaynueve, R.drawable.cien)
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        rndmUno.setImageResource(R.drawable.uno)
+        elementos[rangoDiez[0]] = rndmUno
+        elementos[rangoDiez[1]] = rndmDos
+        elementos[rangoDiez[2]] = rndmTres
+        elementos[rangoDiez[3]] = rndmCuatro
+        elementos[rangoDiez[4]] = rndmCinco
+        elementos[rangoDiez[5]] = rndmSeis
+        elementos[rangoDiez[6]] = rndmSiete
+        elementos[rangoDiez[7]] = rndmOcho
+        elementos[rangoDiez[8]] = rndmNueve
+        elementos[rangoDiez[9]] = rndmDiez
+
+        orden[0] = unoOrden
+        orden[1] = dosOrden
+        orden[2] = tresOrden
+        orden[3] = cuatroOrden
+        orden[4] = cincoOrden
+        orden[5] = seisOrden
+        orden[6] = sieteOrden
+        orden[7] = ochoOrden
+        orden[8] = nueveOrden
+        orden[9] = diezOrden
+
+        unoOrden.tag = "0"
+        dosOrden.tag = "1"
+        tresOrden.tag = "2"
+        cuatroOrden.tag = "3"
+        cincoOrden.tag = "4"
+        seisOrden.tag = "5"
+        sieteOrden.tag = "6"
+        ochoOrden.tag = "7"
+        nueveOrden.tag = "8"
+        diezOrden.tag = "9"
+
+        rndmUno.setImageResource(cartasNumeros[rangoDiez[0]])
+        rndmUno.tag = rangoDiez[0].toString()
         rndmUno.setOnLongClickListener(longClickListener)
 
+        rndmDos.setImageResource(cartasNumeros[rangoDiez[1]])
+        rndmDos.tag = rangoDiez[1].toString()
+        rndmDos.setOnLongClickListener(longClickListener)
+
+        rndmTres.setImageResource(cartasNumeros[rangoDiez[2]])
+        rndmTres.tag = rangoDiez[2].toString()
+        rndmTres.setOnLongClickListener(longClickListener)
+
+        rndmCuatro.setImageResource(cartasNumeros[rangoDiez[3]])
+        rndmCuatro.tag = rangoDiez[3].toString()
+        rndmCuatro.setOnLongClickListener(longClickListener)
+
+        rndmCinco.setImageResource(cartasNumeros[rangoDiez[4]])
+        rndmCinco.tag = rangoDiez[4].toString()
+        rndmCinco.setOnLongClickListener(longClickListener)
+
+        rndmSeis.setImageResource(cartasNumeros[rangoDiez[5]])
+        rndmSeis.tag = rangoDiez[5].toString()
+        rndmSeis.setOnLongClickListener(longClickListener)
+
+        rndmSiete.setImageResource(cartasNumeros[rangoDiez[6]])
+        rndmSiete.tag = rangoDiez[6].toString()
+        rndmSiete.setOnLongClickListener(longClickListener)
+
+        rndmOcho.setImageResource(cartasNumeros[rangoDiez[7]])
+        rndmOcho.tag = rangoDiez[7].toString()
+        rndmOcho.setOnLongClickListener(longClickListener)
+
+        rndmNueve.setImageResource(cartasNumeros[rangoDiez[8]])
+        rndmNueve.tag = rangoDiez[8].toString()
+        rndmNueve.setOnLongClickListener(longClickListener)
+
+        rndmDiez.setImageResource(cartasNumeros[rangoDiez[9]])
+        rndmDiez.tag = rangoDiez[9].toString()
+        rndmDiez.setOnLongClickListener(longClickListener)
+
         unoOrden.setOnDragListener(dragListener)
+        dosOrden.setOnDragListener(dragListener)
+        tresOrden.setOnDragListener(dragListener)
+        cuatroOrden.setOnDragListener(dragListener)
+        cincoOrden.setOnDragListener(dragListener)
+        seisOrden.setOnDragListener(dragListener)
+        sieteOrden.setOnDragListener(dragListener)
+        ochoOrden.setOnDragListener(dragListener)
+        nueveOrden.setOnDragListener(dragListener)
+        diezOrden.setOnDragListener(dragListener)
 
     }
 
@@ -86,9 +186,60 @@ class MainActivity2 : AppCompatActivity() {
                 true
             }
             DragEvent.ACTION_DROP -> {
-                rndmUno.setBackgroundColor(Color.TRANSPARENT)
-                rndmUno.setImageResource(0)
-                unoOrden.setImageResource(R.drawable.uno)
+                if(receiverView.tag as String == event.clipDescription.label){
+                    when(receiverView.tag as String){
+                        "0" -> {
+                            elementos[0]!!.setBackgroundColor(Color.TRANSPARENT)
+                            elementos[0]!!.setImageResource(0)
+                            orden[0]!!.setImageResource(cartasNumeros[0])
+                        }
+                        "1" -> {
+                            elementos[1]!!.setBackgroundColor(Color.TRANSPARENT)
+                            elementos[1]!!.setImageResource(0)
+                            orden[1]!!.setImageResource(cartasNumeros[1])
+                        }
+                        "2" -> {
+                            elementos[2]!!.setBackgroundColor(Color.TRANSPARENT)
+                            elementos[2]!!.setImageResource(0)
+                            orden[2]!!.setImageResource(cartasNumeros[2])
+                        }
+                        "3" -> {
+                            elementos[3]!!.setBackgroundColor(Color.TRANSPARENT)
+                            elementos[3]!!.setImageResource(0)
+                            orden[3]!!.setImageResource(cartasNumeros[3])
+                        }
+                        "4" -> {
+                            elementos[4]!!.setBackgroundColor(Color.TRANSPARENT)
+                            elementos[4]!!.setImageResource(0)
+                            orden[4]!!.setImageResource(cartasNumeros[4])
+                        }
+                        "5" -> {
+                            elementos[5]!!.setBackgroundColor(Color.TRANSPARENT)
+                            elementos[5]!!.setImageResource(0)
+                            orden[5]!!.setImageResource(cartasNumeros[5])
+                        }
+                        "6" -> {
+                            elementos[6]!!.setBackgroundColor(Color.TRANSPARENT)
+                            elementos[6]!!.setImageResource(0)
+                            orden[6]!!.setImageResource(cartasNumeros[6])
+                        }
+                        "7" -> {
+                            elementos[7]!!.setBackgroundColor(Color.TRANSPARENT)
+                            elementos[7]!!.setImageResource(0)
+                            orden[7]!!.setImageResource(cartasNumeros[7])
+                        }
+                        "8" -> {
+                            elementos[8]!!.setBackgroundColor(Color.TRANSPARENT)
+                            elementos[8]!!.setImageResource(0)
+                            orden[8]!!.setImageResource(cartasNumeros[8])
+                        }
+                        "9" -> {
+                            elementos[9]!!.setBackgroundColor(Color.TRANSPARENT)
+                            elementos[9]!!.setImageResource(0)
+                            orden[9]!!.setImageResource(cartasNumeros[9])
+                        }
+                    }
+                }
                 true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
@@ -110,9 +261,4 @@ class MainActivity2 : AppCompatActivity() {
             v.draw(canvas)
         }
     }
-
-    fun randomNum() : Int{
-        return (rango[0]..rango[1]).shuffled().first()
-    }
-
 }
