@@ -1,5 +1,6 @@
 package com.example.proyectocontar
 
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -93,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnJugar.setOnClickListener {
-
+            startActivity(Intent(this, MainActivity2::class.java))
         }
 
         binding.btnReiniciar.setOnClickListener {
