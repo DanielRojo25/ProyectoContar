@@ -14,25 +14,31 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity2">
 
-
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1,2,3.. A contar"
-            android:gravity="center_horizontal"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:padding="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/texto"
-            android:text=""
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:id="@+id/btnReiniciar"
+                android:padding="5dp"
+                android:text="Reiniciar"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/btnVolver"
+
+                android:text="Volver"/>
+
+        </LinearLayout>
 
         <GridLayout
             android:layout_width="wrap_content"
@@ -227,40 +233,6 @@
 
             </LinearLayout>
         </GridLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal"
-            android:padding="20dp">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:id="@+id/btnSiguiente"
-                android:layout_marginRight="10dp"
-                android:text="Sigueinte"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp"
-                android:id="@+id/btnReiniciar"
-                android:padding="5dp"
-                android:text="Reiniciar"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:id="@+id/btnSalir"
-
-                android:text="Salir"/>
-
-        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

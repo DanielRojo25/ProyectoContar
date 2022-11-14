@@ -5,6 +5,7 @@ import android.content.ClipDescription
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Point
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,8 @@ import android.view.DragEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import android.widget.Toolbar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main2.*
 import kotlin.random.Random
@@ -19,19 +22,19 @@ import kotlin.random.Random
 class MainActivity2 : AppCompatActivity() {
 
 
-    val rangoDiez = (0..9).shuffled()
-    val rangoVeinte = (10..19).shuffled()
-    val rangoTreinta = (20..29).shuffled()
-    val rangoCuarenta = (30..39).shuffled()
-    val rangoCincuenta = (40..49).shuffled()
-    val rangoSesenta = (50..59).shuffled()
-    val rangoSetenta = (60..69).shuffled()
-    val rangoOchenta = (70..79).shuffled()
-    val rangoNoventa = (80..89).shuffled()
-    val rangoCien = (90..99).shuffled()
+    var rangoDiez = (0..9).shuffled()
+    var rangoVeinte = (10..19).shuffled()
+    var rangoTreinta = (20..29).shuffled()
+    var rangoCuarenta = (30..39).shuffled()
+    var rangoCincuenta = (40..49).shuffled()
+    var rangoSesenta = (50..59).shuffled()
+    var rangoSetenta = (60..69).shuffled()
+    var rangoOchenta = (70..79).shuffled()
+    var rangoNoventa = (80..89).shuffled()
+    var rangoCien = (90..99).shuffled()
 
-    val orden = arrayOfNulls<ImageView>(10)
-    var elementos = arrayOfNulls<ImageView>(10)
+    private var orden = arrayOfNulls<ImageView>(10)
+    private var elementos = arrayOfNulls<ImageView>(10)
 
 
 
@@ -61,17 +64,59 @@ class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
+        title = "1,2,3.. A contar!"
 
-        elementos[rangoDiez[0]] = rndmUno
-        elementos[rangoDiez[1]] = rndmDos
-        elementos[rangoDiez[2]] = rndmTres
-        elementos[rangoDiez[3]] = rndmCuatro
-        elementos[rangoDiez[4]] = rndmCinco
-        elementos[rangoDiez[5]] = rndmSeis
-        elementos[rangoDiez[6]] = rndmSiete
-        elementos[rangoDiez[7]] = rndmOcho
-        elementos[rangoDiez[8]] = rndmNueve
-        elementos[rangoDiez[9]] = rndmDiez
+        btnVolver.setOnClickListener {
+            this.finish()
+        }
+
+        btnReiniciar.setOnClickListener{
+            rangoDiez = (0..9).shuffled()
+            mezclarNumeros(rangoDiez)
+
+            unoOrden.setImageResource(0)
+            unoOrden.setBackgroundColor(Color.WHITE)
+            rndmUno.setImageResource(cartasNumeros[rangoDiez[0]])
+
+            dosOrden.setImageResource(0)
+            dosOrden.setBackgroundColor(Color.WHITE)
+            rndmDos.setImageResource(cartasNumeros[rangoDiez[1]])
+
+            tresOrden.setImageResource(0)
+            tresOrden.setBackgroundColor(Color.WHITE)
+            rndmTres.setImageResource(cartasNumeros[rangoDiez[2]])
+
+            cuatroOrden.setImageResource(0)
+            cuatroOrden.setBackgroundColor(Color.WHITE)
+            rndmCuatro.setImageResource(cartasNumeros[rangoDiez[3]])
+
+            cincoOrden.setImageResource(0)
+            cincoOrden.setBackgroundColor(Color.WHITE)
+            rndmCinco.setImageResource(cartasNumeros[rangoDiez[4]])
+
+            seisOrden.setImageResource(0)
+            seisOrden.setBackgroundColor(Color.WHITE)
+            rndmSeis.setImageResource(cartasNumeros[rangoDiez[5]])
+
+            sieteOrden.setImageResource(0)
+            sieteOrden.setBackgroundColor(Color.WHITE)
+            rndmSiete.setImageResource(cartasNumeros[rangoDiez[6]])
+
+            ochoOrden.setImageResource(0)
+            ochoOrden.setBackgroundColor(Color.WHITE)
+            rndmOcho.setImageResource(cartasNumeros[rangoDiez[7]])
+
+            nueveOrden.setImageResource(0)
+            nueveOrden.setBackgroundColor(Color.WHITE)
+            rndmNueve.setImageResource(cartasNumeros[rangoDiez[8]])
+
+            diezOrden.setImageResource(0)
+            diezOrden.setBackgroundColor(Color.WHITE)
+            rndmDiez.setImageResource(cartasNumeros[rangoDiez[9]])
+
+        }
+
+        mezclarNumeros(rangoDiez)
 
         orden[0] = unoOrden
         orden[1] = dosOrden
@@ -135,6 +180,24 @@ class MainActivity2 : AppCompatActivity() {
         rndmDiez.tag = rangoDiez[9].toString()
         rndmDiez.setOnLongClickListener(longClickListener)
 
+        dragListeners()
+
+    }
+
+    private fun mezclarNumeros(lista : List<Int>){
+        elementos[lista[0]] = rndmUno
+        elementos[lista[1]] = rndmDos
+        elementos[lista[2]] = rndmTres
+        elementos[lista[3]] = rndmCuatro
+        elementos[lista[4]] = rndmCinco
+        elementos[lista[5]] = rndmSeis
+        elementos[lista[6]] = rndmSiete
+        elementos[lista[7]] = rndmOcho
+        elementos[lista[8]] = rndmNueve
+        elementos[lista[9]] = rndmDiez
+    }
+
+    private fun dragListeners() {
         unoOrden.setOnDragListener(dragListener)
         dosOrden.setOnDragListener(dragListener)
         tresOrden.setOnDragListener(dragListener)
@@ -145,7 +208,6 @@ class MainActivity2 : AppCompatActivity() {
         ochoOrden.setOnDragListener(dragListener)
         nueveOrden.setOnDragListener(dragListener)
         diezOrden.setOnDragListener(dragListener)
-
     }
 
     private val longClickListener = View.OnLongClickListener { v ->
@@ -238,6 +300,18 @@ class MainActivity2 : AppCompatActivity() {
                             elementos[9]!!.setImageResource(0)
                             orden[9]!!.setImageResource(cartasNumeros[9])
                         }
+                    }
+                    if(elementos[0]!!.solidColor == Color.TRANSPARENT && elementos[1]!!.solidColor == Color.TRANSPARENT &&
+                        elementos[2]!!.solidColor == Color.TRANSPARENT && elementos[3]!!.solidColor == Color.TRANSPARENT &&
+                        elementos[4]!!.solidColor == Color.TRANSPARENT && elementos[5]!!.solidColor == Color.TRANSPARENT &&
+                        elementos[6]!!.solidColor == Color.TRANSPARENT && elementos[7]!!.solidColor == Color.TRANSPARENT &&
+                        elementos[8]!!.solidColor == Color.TRANSPARENT && elementos[9]!!.solidColor == Color.TRANSPARENT){
+                        AlertDialog.Builder(this)
+                            .setMessage("¡FELICIDADES, CONSEGUISTE ORDENAR TODOS LOS NÚMEROS!")
+                            .setPositiveButton("Aceptar"){ _,_ ->
+
+                            }
+                            .show()
                     }
                 }
                 true

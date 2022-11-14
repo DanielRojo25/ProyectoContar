@@ -82,6 +82,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        title = "1,2,3.. A contar!"
 
         binding.btnIniciar.setOnClickListener {
             corrutina()
