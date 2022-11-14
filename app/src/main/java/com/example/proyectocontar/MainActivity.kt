@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     var iniciar = true
     var pausar  = false
-    var indice = -1
+    var indice = 96
     var bandera = false
 
     var cartasNumeros = arrayListOf(R.drawable.uno, R.drawable.dos, R.drawable.tres, R.drawable.cuatro, R.drawable.cinco,
@@ -72,9 +72,9 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread{
                     recorrerNumeros()
                 }
-                delay(1000)
+                delay(2000)
             }
-            if(indice == 99) pausar()
+            if(indice == 100) pausar()
         }
     }
 
@@ -109,9 +109,11 @@ class MainActivity : AppCompatActivity() {
         mp = MediaPlayer.create(this,audiosNumeros[indice])
         mp.start()
 
-        if(indice==99) {
+        if(indice==100) {
             mp.stop()
-            binding.texto.text = "Juego Terminado!"
+            runOnUiThread {
+                binding.texto.text = "Juego Terminado!" }
+
         }
         indice++
     }
