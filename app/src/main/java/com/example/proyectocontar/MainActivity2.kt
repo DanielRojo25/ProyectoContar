@@ -21,7 +21,7 @@ import kotlin.random.Random
 
 class MainActivity2 : AppCompatActivity() {
 
-
+    var contador=0
     var rangoDiez = (0..9).shuffled()
     var rangoVeinte = (10..19).shuffled()
     var rangoTreinta = (20..29).shuffled()
@@ -35,6 +35,10 @@ class MainActivity2 : AppCompatActivity() {
 
     private var orden = arrayOfNulls<ImageView>(10)
     private var elementos = arrayOfNulls<ImageView>(10)
+
+
+
+
 
 
 
@@ -71,6 +75,7 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         btnReiniciar.setOnClickListener{
+            contador=0
             rangoDiez = (0..9).shuffled()
             mezclarNumeros(rangoDiez)
 
@@ -197,6 +202,8 @@ class MainActivity2 : AppCompatActivity() {
         elementos[lista[9]] = rndmDiez
     }
 
+
+
     private fun dragListeners() {
         unoOrden.setOnDragListener(dragListener)
         dosOrden.setOnDragListener(dragListener)
@@ -248,7 +255,9 @@ class MainActivity2 : AppCompatActivity() {
                 true
             }
             DragEvent.ACTION_DROP -> {
+
                 if(receiverView.tag as String == event.clipDescription.label){
+                    contador++
                     when(receiverView.tag as String){
                         "0" -> {
                             elementos[0]!!.setBackgroundColor(Color.TRANSPARENT)
@@ -301,19 +310,20 @@ class MainActivity2 : AppCompatActivity() {
                             orden[9]!!.setImageResource(cartasNumeros[9])
                         }
                     }
-                    if(elementos[0]!!.solidColor == Color.TRANSPARENT && elementos[1]!!.solidColor == Color.TRANSPARENT &&
-                        elementos[2]!!.solidColor == Color.TRANSPARENT && elementos[3]!!.solidColor == Color.TRANSPARENT &&
-                        elementos[4]!!.solidColor == Color.TRANSPARENT && elementos[5]!!.solidColor == Color.TRANSPARENT &&
-                        elementos[6]!!.solidColor == Color.TRANSPARENT && elementos[7]!!.solidColor == Color.TRANSPARENT &&
-                        elementos[8]!!.solidColor == Color.TRANSPARENT && elementos[9]!!.solidColor == Color.TRANSPARENT){
-                        AlertDialog.Builder(this)
-                            .setMessage("¡FELICIDADES, CONSEGUISTE ORDENAR TODOS LOS NÚMEROS!")
-                            .setPositiveButton("Aceptar"){ _,_ ->
 
-                            }
-                            .show()
-                    }
+
+                    if(contador==10){
+                            AlertDialog.Builder(this)
+                                .setMessage("¡FELICIDADES, CONSEGUISTE ORDENAR TODOS LOS NÚMEROS!")
+                                .setPositiveButton("Aceptar") {d,i ->
+
+                                }
+                                .show()}
+
+
+
                 }
+
                 true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
