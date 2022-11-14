@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     var iniciar = true
     var pausar  = false
-    var indice = 96
+    var indice = 0
     var bandera = false
 
     var cartasNumeros = arrayListOf(R.drawable.uno, R.drawable.dos, R.drawable.tres, R.drawable.cuatro, R.drawable.cinco,
@@ -78,11 +78,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun intro(){
+        AlertDialog.Builder(this)
+            .setTitle("BIENVENIDO")
+            .setMessage("EN ESTA APLICACIÓN PODRÁS APRENDER LOS NÚMEROS DEL UNO AL CIEN, TAMBIÉN SE PODRÁ REPASAR LO APRENDIDO " +
+                    "CON UN PEQUEÑO JUEGO DONDE TENDRÁ QUE ORDENARLOS DEL UNO AL DIEZ.")
+            .setPositiveButton("ACEPTAR"){_,_->}
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         title = "1,2,3.. A contar!"
+
+        intro()
 
         binding.btnIniciar.setOnClickListener {
             corrutina()
@@ -91,7 +101,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnPausa.setOnClickListener {
             cambiarTexto()
-
         }
 
         binding.btnJugar.setOnClickListener {
@@ -100,22 +109,24 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnReiniciar.setOnClickListener {
             terminar()
+            binding.btnIniciar.isClickable = true
         }
 
     }
 
     fun recorrerNumeros(){
-        binding.imagen.setImageResource(cartasNumeros[indice])
-        mp = MediaPlayer.create(this,audiosNumeros[indice])
-        mp.start()
-
-        if(indice==100) {
+        if(indice < 100) {
+            binding.imagen.setImageResource(cartasNumeros[indice])
+            mp = MediaPlayer.create(this, audiosNumeros[indice])
+            mp.start()
+            indice++
+        }else if(indice==100) {
             mp.stop()
             runOnUiThread {
-                binding.texto.text = "Juego Terminado!" }
+                binding.texto.text = "Juego Terminado!"
+            }
+        }else terminar()
 
-        }
-        indice++
     }
 
     fun terminar(){

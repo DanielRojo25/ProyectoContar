@@ -187,6 +187,19 @@ class MainActivity2 : AppCompatActivity() {
         elementos[lista[7]] = rndmOcho
         elementos[lista[8]] = rndmNueve
         elementos[lista[9]] = rndmDiez
+
+        rndmUno.tag = lista[0].toString()
+        rndmDos.tag = lista[1].toString()
+        rndmTres.tag = lista[2].toString()
+        rndmCuatro.tag = lista[3].toString()
+        rndmCinco.tag = lista[4].toString()
+        rndmSeis.tag = lista[5].toString()
+        rndmSiete.tag = lista[6].toString()
+        rndmOcho.tag = lista[7].toString()
+        rndmNueve.tag = lista[8].toString()
+        rndmDiez.tag = lista[9].toString()
+
+
     }
 
     private fun dragListeners() {
@@ -240,6 +253,7 @@ class MainActivity2 : AppCompatActivity() {
                 true
             }
             DragEvent.ACTION_DROP -> {
+                Toast.makeText(this, receiverView.tag as String + " = " + event.clipDescription.label, Toast.LENGTH_LONG).show()
                 if(receiverView.tag as String == event.clipDescription.label){
                     contador++
                     when(receiverView.tag as String){
