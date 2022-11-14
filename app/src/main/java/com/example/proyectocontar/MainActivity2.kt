@@ -23,16 +23,6 @@ class MainActivity2 : AppCompatActivity() {
 
 
     var rangoDiez = (0..9).shuffled()
-    var rangoVeinte = (10..19).shuffled()
-    var rangoTreinta = (20..29).shuffled()
-    var rangoCuarenta = (30..39).shuffled()
-    var rangoCincuenta = (40..49).shuffled()
-    var rangoSesenta = (50..59).shuffled()
-    var rangoSetenta = (60..69).shuffled()
-    var rangoOchenta = (70..79).shuffled()
-    var rangoNoventa = (80..89).shuffled()
-    var rangoCien = (90..99).shuffled()
-
     private var orden = arrayOfNulls<ImageView>(10)
     private var elementos = arrayOfNulls<ImageView>(10)
 
@@ -71,7 +61,7 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         btnReiniciar.setOnClickListener{
-            rangoDiez = (0..9).shuffled()
+            //rangoDiez = (0..9).shuffled()
             mezclarNumeros(rangoDiez)
 
             unoOrden.setImageResource(0)
@@ -254,6 +244,7 @@ class MainActivity2 : AppCompatActivity() {
                             elementos[0]!!.setBackgroundColor(Color.TRANSPARENT)
                             elementos[0]!!.setImageResource(0)
                             orden[0]!!.setImageResource(cartasNumeros[0])
+
                         }
                         "1" -> {
                             elementos[1]!!.setBackgroundColor(Color.TRANSPARENT)
@@ -301,11 +292,11 @@ class MainActivity2 : AppCompatActivity() {
                             orden[9]!!.setImageResource(cartasNumeros[9])
                         }
                     }
-                    if(elementos[0]!!.solidColor == Color.TRANSPARENT && elementos[1]!!.solidColor == Color.TRANSPARENT &&
-                        elementos[2]!!.solidColor == Color.TRANSPARENT && elementos[3]!!.solidColor == Color.TRANSPARENT &&
-                        elementos[4]!!.solidColor == Color.TRANSPARENT && elementos[5]!!.solidColor == Color.TRANSPARENT &&
-                        elementos[6]!!.solidColor == Color.TRANSPARENT && elementos[7]!!.solidColor == Color.TRANSPARENT &&
-                        elementos[8]!!.solidColor == Color.TRANSPARENT && elementos[9]!!.solidColor == Color.TRANSPARENT){
+                    if(orden[0]!!.imageAlpha == cartasNumeros[0] && orden[1]!!.imageAlpha == cartasNumeros[1] &&
+                        orden[2]!!.imageAlpha == cartasNumeros[2] && orden[3]!!.imageAlpha == cartasNumeros[3] &&
+                        orden[4]!!.imageAlpha == cartasNumeros[4] && orden[5]!!.imageAlpha == cartasNumeros[5] &&
+                        orden[6]!!.imageAlpha == cartasNumeros[6] && orden[7]!!.imageAlpha == cartasNumeros[7] &&
+                        orden[8]!!.imageAlpha == cartasNumeros[8] && orden[9]!!.imageAlpha == cartasNumeros[9]){
                         AlertDialog.Builder(this)
                             .setMessage("¡FELICIDADES, CONSEGUISTE ORDENAR TODOS LOS NÚMEROS!")
                             .setPositiveButton("Aceptar"){ _,_ ->
