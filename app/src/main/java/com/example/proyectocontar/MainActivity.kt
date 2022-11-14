@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
             .setMessage("EN ESTA APLICACIÓN PODRÁS APRENDER LOS NÚMEROS DEL UNO AL CIEN, TAMBIÉN SE PODRÁ REPASAR LO APRENDIDO " +
                     "CON UN PEQUEÑO JUEGO DONDE TENDRÁ QUE ORDENARLOS DEL UNO AL DIEZ.")
             .setPositiveButton("ACEPTAR"){_,_->}
+            .show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
