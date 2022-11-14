@@ -20,15 +20,11 @@ import kotlinx.android.synthetic.main.activity_main2.*
 import kotlin.random.Random
 
 class MainActivity2 : AppCompatActivity() {
-
-
     var rangoDiez = (0..9).shuffled()
 
     private var orden = arrayOfNulls<ImageView>(10)
     private var elementos = arrayOfNulls<ImageView>(10)
     private var contador = 0
-
-
 
     var cartasNumeros = arrayListOf(R.drawable.uno, R.drawable.dos, R.drawable.tres, R.drawable.cuatro, R.drawable.cinco,
         R.drawable.seis, R.drawable.siete, R.drawable.ocho, R.drawable.nueve, R.drawable.diez,

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.proyectocontar.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main2.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -96,12 +97,16 @@ class MainActivity : AppCompatActivity() {
         intro()
 
         binding.btnIniciar.setOnClickListener {
+            iniciar = true
             corrutina()
             binding.btnIniciar.isClickable=false
+            binding.btnPausa.isClickable = true
+            binding.btnReiniciar.isClickable = true
         }
 
         binding.btnPausa.setOnClickListener {
             cambiarTexto()
+
         }
 
         binding.btnJugar.setOnClickListener {
@@ -111,6 +116,10 @@ class MainActivity : AppCompatActivity() {
         binding.btnReiniciar.setOnClickListener {
             terminar()
             binding.btnIniciar.isClickable = true
+            binding.btnPausa.isClickable = false
+            binding.btnReiniciar.isClickable = false
+            indice = 0
+
         }
 
     }
@@ -137,7 +146,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun pausar(){
-        pausar = pausar == false
+        pausar = !pausar
     }
 
     fun cambiarTexto (){
