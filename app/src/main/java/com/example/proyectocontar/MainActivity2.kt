@@ -249,7 +249,7 @@ class MainActivity2 : AppCompatActivity() {
                 true
             }
             DragEvent.ACTION_DROP -> {
-                Toast.makeText(this, receiverView.tag as String + " = " + event.clipDescription.label, Toast.LENGTH_LONG).show()
+                //Toast.makeText(this, receiverView.tag as String + " = " + event.clipDescription.label, Toast.LENGTH_LONG).show()
                 if(receiverView.tag as String == event.clipDescription.label){
                     contador++
                     when(receiverView.tag as String){
